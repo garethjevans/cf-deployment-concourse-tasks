@@ -245,11 +245,13 @@ function bosh_deploy() {
   if ${DEPLOY_WITH_UPTIME_MEASUREMENTS}; then
     uptimer_bosh_deploy
   else
-    bosh \
-      -n \
-      -d "${deployment_name}" \
-      deploy \
-      "${INTERPOLATED_MANIFEST}"
+    pushd cf-deployment
+      bosh \
+        -n \
+        -d "${deployment_name}" \
+        deploy \
+        "${INTERPOLATED_MANIFEST}"
+    popd
   fi
 }
 
