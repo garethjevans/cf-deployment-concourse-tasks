@@ -131,6 +131,12 @@ function main() {
       done
     fi 
 
+    if [ -n "${CLOUDCONFIG_CUSTOMISATIONS}" ]; then
+      for CUSTOMISATION in ${CLOUDCONFIG_CUSTOMISATIONS}; do
+        cp ${root_dir}/cloud-config-customisations/${CUSTOMISATION} cloud-config/
+      done
+    fi
+
     bbl --debug up \
       ${name_flag} \
       ${lb_flags} \

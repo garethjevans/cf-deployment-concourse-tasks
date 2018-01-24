@@ -20,6 +20,9 @@ inputs:
 - name: bbl-customisations
 # - A directory containing a list of extra terraform
 #   scripts to be applied with bbl
+- name: cloud-config-customisations
+# - A directory containing a list of extra ops files
+#   to be appended to the generated cloud-config
 outputs:
 - name: updated-env-repo
 # - The env-repo resource, with changes git committed,
@@ -94,6 +97,12 @@ params:
   # - a list of terraform customisations to be added to bbl
   # - Files will be added to the terraform directory before the
   # - plan is applied.
+
+  CLOUDCONFIG_CUSTOMISATIONS:
+  # - Optional
+  # - a list of cloud-config customisations to be added to bbl
+  # - Files will be added to the cloud-config directory before the
+  # - cloud-config is applied.
 
   GIT_COMMIT_EMAIL:
   GIT_COMMIT_USERNAME:
